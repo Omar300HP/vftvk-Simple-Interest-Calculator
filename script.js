@@ -1,6 +1,34 @@
-function compute()
-{
-    p = document.getElementById("principal").value;
+function compute() {
+    // function to validate the principal value
+    validation();
+    var principal = document.getElementById("principal").value;
+    var rate = document.getElementById("rate").value;
+    var years = document.getElementById("years").value;
+    var interest = principal * years * rate / 100;
+    var amount =  parseFloat(interest);
+    var year = new Date().getFullYear() + parseInt(years);
+
+    if (principal > 0) {
+        
+         document.getElementById("result").innerHTML = 
+    `If you deposit \<mark>${principal}</mark> \<br /> at an interest rate of \<mark>${rate}%</mark>. \<br /> You will receive an amount of \<mark>${amount}</mark>, \<br /> in the year \<mark>${year}</mark>`;
+    }
+  
+
     
 }
-        
+
+function updateRate() {
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText = `${rateval}%`;
+}
+
+function validation() {
+    // get the principal element
+    var principal = document.getElementById("principal");
+    // check the principal value
+    if (principal.value <= 0) {
+        alert("Enter a positive number")
+        principal.focus()
+    }
+}
